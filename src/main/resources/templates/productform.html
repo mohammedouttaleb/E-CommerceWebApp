@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/stylee.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+
+<section class="get-in-touch">
+   <h1 class="title">Product Form</h1>
+   <form class="contact-form row" method="Post"   th:action="@{/user/{id}/sendproduct(id=${userid})}" enctype="multipart/form-data" >
+      <div class="form-field col-lg-6">
+         <label for="categorie" class="input-text js-input" >Choose a Category for Ur product:</label>
+         <select id="categorie" name="categorie" class="input-text js-input"  required  >
+            <option value="nutrition">nutrition</option>
+            <option value="art">Art</option>
+            <option value="services">Services</option>
+            <option value="clothes">Clothes</option>
+            <option value="electronics">Electronics</option>
+            <option value="Old Shit">Old Shit</option>
+         </select>   
+      </div>
+      <div class="form-field col-lg-6 ">
+         <input id="description" name="description" class="input-text js-input" type="text" placeholder="Product Description" >
+         
+      </div>
+      <div class="form-field col-lg-6 ">
+         <input id="name" name="name" class="input-text js-input" type="text" placeholder="Product Name" required>
+         
+      </div>
+      <div class="form-field col-lg-6 ">
+         <input id="brand" name="brand" class="input-text js-input" type="text" placeholder="Product Brand" required>
+         
+      </div>
+       <div class="form-field col-lg-6 ">
+         <input id="price" name="price" class="input-text js-input" type="number" placeholder="Price" required>
+         
+      </div>
+      <div class="form-field col-lg-12">
+         <input id="stock" name="stock" class="input-text js-input" type="number" placeholder="0" required >
+    
+      </div>
+      <div class="form-field col-lg-6 " >
+             
+             <input  class="submit-btn"  type="file" name="uploadfile" multiple="multiple" style="width:29%;">
+      </div>
+      <div class="form-field col-lg-12">
+         <input class="submit-btn" type="submit" value="Submit">
+      </div>
+   </form>
+</section>
+
+</body>
+</html>

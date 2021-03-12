@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Library Store</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Library Store</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Top Products</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio"><span th:if="${user}"></span><span th:unless="${user}" >Categories</span></a></li>
+                        <li class="nav-item"  ><span th:if="${user}"><a class="nav-link js-scroll-trigger" href="#client"><span th:text=" ${user.login} "></span></a></span>
+                         <span th:unless="${user}"><a class="nav-link js-scroll-trigger" href="/registration">SignUp</a></span></li>
+                        
+                        
+                        
+                          <li class="nav-item"  ><span th:if="${user}"><a class="nav-link js-scroll-trigger" href="/librarystore">Log Out</a></span>
+                          <span th:unless="${user}"><a class="nav-link js-scroll-trigger" href="/login">Log In</a></span>
+                          </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-10 align-self-end">
+                        <h1 class="text-uppercase text-white font-weight-bold"><span th:if="${user}">Sell All Products U made Here!</span><span th:unless="${user}">Find Ur favourite Products Here!!</span></h1>
+                        <hr class="divider my-4" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 font-weight-light mb-5">U want to make money from e-commerce we are your best way</p>
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- About-->
+        <section class="page-section bg-primary" id="about">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="text-white mt-0">We've got what you need!</h2>
+                        <hr class="divider light my-4" />
+                        <p class="text-white-50 mb-4"> Here is Your Way to become rich Man!</p>
+                        <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <h2 class="text-center mt-0"><span th:if="${user}">Your Current Products</span><span th:unless="${user}" >Find Out Our Top 10 selling Products</span></h2>
+                <hr class="divider my-4" />
+                   <div th:if="${user}">
+                   
+                  <table class="table table-striped table-hover table-bordered">
+                  
+                  <tr>
+                      <th>Selling Numbers</th>
+                      <th>Category</th>
+                      <th>Product Name</th>
+                      <th>Details</th>
+                      <th>Delete</th>
+                  </tr>
+                      <tr th:each=" product : ${user.productlist}" >
+                      <td th:text="${product.sellingnumber}"></td>
+                      <td th:text="${product.categorie}" ></td>
+                      <td th:text="${product.name}"></td>
+                      <td><a th:href="@{/user/{userid}/productdetails/{id}(id=${product.id},userid=${user.id})}">
+                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                              <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                              </svg>
+                           </a>
+                      </td>
+                      <td><a th:href="@{/user/{userid}/delete/{id}(id=${product.id},userid=${user.id})}"><img src="/images/delete.png" style=" width:30px;height:30px;" alt=""/></a></td>
+                  </tr>
+                </table>
+                   
+                   </div>
+           
+           <div th:unless="${user}" >        
+                <table class="table table-striped table-hover table-bordered">
+                  
+                  <tr>
+                      <th>Selling Numbers</th>
+                      <th>Category</th>
+                      <th>Product Name</th>
+                      
+                      <th>Details</th>
+                  </tr>
+                      <tr th:each=" product : ${products}" >
+                      <td th:text="${product.sellingnumber}"></td>
+                      <td th:text="${product.categorie}" ></td>
+                      <td th:text="${product.name}"></td>
+                      
+                      <td><a th:href="@{/productdetails/{id}(id=${product.id})}">
+                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                              <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                              </svg>
+                           </a>
+                      </td>
+                  </tr>
+                </table>
+                </div>
+                <hr class="divider my-4" />
+           
+           </div>
+           
+           <!-- Portfolio-->
+           <div th:if="${user}">
+           </div>
+        
+        <div th:unless="${user}" >
+        <div id="portfolio">
+            <div class="container-fluid p-0">
+                <div class="row no-gutters"> 
+                    <div class="col-lg-4 col-sm-6">
+                        
+                        <a class="portfolio-box" href="products/art">
+                            <img class="img-fluid" src="images/art.jpg" alt="im1hadi" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Category</div>
+                                <div class="project-name">Art</div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="products/clothes">
+                            <img class="img-fluid" src="images/clothes.jpg" alt="" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Category</div>
+                                <div class="project-name">Clothes</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="products/electronics">
+                            <img class="img-fluid" src="images/electronics.jpg" alt="" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Category</div>
+                                <div class="project-name">Electronics</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="products/nutrition">
+                            <img class="img-fluid" src="images/nutrition.png" alt="" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Category</div>
+                                <div class="project-name">Nutrition</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="products/old shit">
+                            <img class="img-fluid" src="images/old.jpg" alt="" />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Category</div>
+                                <div class="project-name">Old Shit</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="products/services">
+                            <img class="img-fluid" src="images/services.jpg" alt="" />
+                            <div class="portfolio-box-caption p-3">
+                                <div class="project-category text-white-50">Category</div>
+                                <div class="project-name">Services</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>     
+        </section>
+        <!-- Call to action-->
+        <section class="page-section bg-dark text-white" id="client">
+            <div class="container text-center">
+                <h2 class="mb-4"><span th:if="${user}">Add Ur Product Here!!</span><span th:unless="${user}">U liked Any of our products!</span></h2>
+                <span class="btn btn-light btn-xl" ><span th:if="${user}"><a   th:href="@{/user/{id}/addproduct(id=${user.id})}"            >Click Here!</a></span><span th:unless="${user}"><a  href="">Order it Now!</a></span> </span>
+                
+            </div>
+        </section>
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="mt-0">Let's Get In Touch!</h2>
+                        <hr class="divider my-4" />
+                        <p class="text-muted mb-5">Ready to start selling Ur Products!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                        <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                        <div>+1 (555) 123-4567</div>
+                    </div>
+                    <div class="col-lg-4 mr-auto text-center">
+                        <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                        <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
+                        <a class="d-block" href="mailto:maddcontact@gmail.com">maddcontact@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - Madd WebSite</div></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

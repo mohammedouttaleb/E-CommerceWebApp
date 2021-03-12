@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+	<head>
+		<meta charset="utf-8">
+		<title>/bootstrap E-commerce Templates</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- /bootstrap -->
+		<link href="/bootstrap/css//bootstrap.min.css" rel="stylesheet">      
+		<link href="/bootstrap/css//bootstrap-responsive.min.css" rel="stylesheet">
+		
+		<link href="/themes/css//bootstrappage.css" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="/themes/css/flexslider.css" rel="stylesheet"/>
+		<link href="/themes/css/main.css" rel="stylesheet"/>
+      
+      
+       
+        
+        <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes /bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+
+		<!-- scripts -->
+		<script src="/themes/js/jquery-1.7.2.min.js"></script>
+		<script src="/bootstrap/js//bootstrap.min.js"></script>				
+		<script src="/themes/js/superfish.js"></script>	
+		<script src="/themes/js/jquery.scrolltotop.js"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		
+			 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="/librarystore">Library Store</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Top Products</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio"><span th:if="${user}"></span><span th:unless="${user}" >Categories</span></a></li>
+                        <li class="nav-item"  ><span th:if="${user}"><a class="nav-link js-scroll-trigger" href="#client"><span th:text=" ${user.login} "></span></a></span>
+                         <span th:unless="${user}"><a class="nav-link js-scroll-trigger" href="/registration">SignUp</a></span></li>
+                        
+                        
+                        
+                          <li class="nav-item"  ><span th:if="${user}"><a class="nav-link js-scroll-trigger" href="/librarystore">Log Out</a></span>
+                          <span th:unless="${user}"><a class="nav-link js-scroll-trigger" href="/login">Log In</a></span>
+                          </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+		
+		   <!--<div id="wrapper" class="container">-->
+		   
+		   
+		   
+		   <section  class="homepage-slider" id="home-slider">
+				<div class="flexslider">
+					<div th:if="${categorie=='clothes'}">
+					 <ul class="slides">
+						<li>
+							<img src="/themes/images/carousel/banner-1.jpg" alt="" />
+						</li>
+						<li>
+							<img src="/themes/images/carousel/banner-2.jpg" alt="" />
+							<div class="intro">
+								<h1>Makay gha Zhou</h1>
+								<p><span>Kolshi aylebes li 3endu o li ma3enduch</span></p>
+								<p><span>Zid Rah Mab9ach Mab9ach</span></p>
+							</div>
+						</li>
+					 </ul>
+					</div>
+					<div th:if="${categorie=='electronics'}">
+					 <ul class="slides">
+						<li>
+							<img src="/assets/img/power.jpg" alt="image" style="height : 500px;" />
+						</li>
+						<li>
+							<img src="/assets/img/hybrid.png" alt="" style="height : 500px;"  />
+							<div class="intro">
+								<h1>Makay gha Zhou</h1>
+								<p><span>Kolshi aylebes</span></p>
+								<p><span>Zid Rah Mab9ach Mab9ach</span></p>
+							</div>
+						</li>
+					 </ul>
+					</div>
+					<div th:if="${categorie=='art'}">
+					 <ul class="slides">
+						<li>
+							<img src="/assets/img/art1.jpg" alt="image" style="height : 500px;" />
+						</li>
+						<li>
+							<img src="/assets/img/art2.jpg" alt="" style="height : 500px;"  />
+							<div class="intro">
+								<h1>Makay gha Zhou</h1>
+								<p><span>Kolshi aylebes</span></p>
+								<p><span>Zid Rah Mab9ach Mab9ach</span></p>
+							</div>
+						</li>
+					 </ul>
+					</div>
+					<div th:if="${categorie=='old shit'}">
+					 <ul class="slides">
+						<li>
+							<img src="/assets/img/old1.jpg" alt="image" style="height : 500px;" />
+						</li>
+						<li>
+							<img src="/assets/img/old2.jpeg" alt="" style="height : 500px;"  />
+							<div class="intro">
+								<h1>Makay gha Zhou</h1>
+								<p><span>Kolshi aylebes</span></p>
+								<p><span>Zid Rah Mab9ach Mab9ach</span></p>
+							</div>
+						</li>
+					 </ul>
+					</div>
+					<div th:if="${categorie=='services'}">
+					 <ul class="slides">
+						<li>
+							<img src="/images/services.jpg" alt="image" style="height : 500px;" />
+						</li>
+						<li>
+							<img src="/assets/img/services1.jpg" alt="" style="height : 500px;"  />
+							<div class="intro">
+								<h1>Makay gha Zhou</h1>
+								<p><span>Kolshi aylebes</span></p>
+								<p><span>Zid Rah Mab9ach Mab9ach</span></p>
+							</div>
+						</li>
+					 </ul>
+					</div>
+					<div th:if="${categorie=='nutrition'}">
+					 <ul class="slides">
+						<li>
+							<img src="/assets/img/food1.jpg" alt="image" style="height : 500px;" />
+						</li>
+						<li>
+							<img src="/assets/img/food2.jpg" alt="" style="height : 500px;"  />
+							<div class="intro">
+								<h1>Makay gha Zhou</h1>
+								<p><span>Kolshi aylebes</span></p>
+								<p><span>Zid Rah Mab9ach Mab9ach</span></p>
+							</div>
+						</li>
+					 </ul>
+					</div>
+				</div>			
+			</section>
+			
+			
+			<section class="main-content">
+				<div class="row">
+					<div class="span12">													
+						<div class="row">
+							<div class="span12">
+								 <h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line">Feature <strong>Products</strong></span></span></span>
+									
+								</h4>
+								<div id="myCarousel" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item"  style="display : flex;justify-content: space-around; flex-wrap: wrap;" >
+											
+											<ul class="thumbnails"   th:each=" product : ${prodbycategorie}"  >												
+												  <li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<p><a th:href="@{/productdetails/{id}(id=${product.id})}"><img th:src="@{/assets/img/{productid}/1.jpg(productid=${product.name})}" alt="" style="width: 100%; height:220px;"/></a></p>
+														<a class="title" th:href="@{/productdetails/{id}(id=${product.id})}"><span   th:text="${product.name}" ></span></a><br>
+														<a class="category" th:href="@{/productdetails/{id}(id=${product.id})}"><span   th:text="${product.categorie}" ></span></a><br>
+														<span class="price" th:text="${product.price}" ></span><span>$</span>
+													</div>
+												</li>
+												
+										    </ul>
+										
+										</div>
+									</div>							
+								</div>
+							</div>						
+						</div>
+						<br/>
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line">Latest <strong>Products</strong></span></span></span>
+									<span class="pull-right">
+								
+									</span>
+								</h4>
+								<div id="myCarousel-2" class="myCarousel carousel slide">
+							<div class="carousel-inner">
+										<div class="active item"  style="display : flex;justify-content: space-around; flex-wrap: wrap;" >
+											
+											<ul class="thumbnails"   th:each=" product : ${lastproducts}"  >												
+												  <li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<p><a th:href="@{/productdetails/{id}(id=${product.id})}"><img th:src="@{/assets/img/{productid}/1.jpg(productid=${product.name})}" alt="" style="width: 100%; height:220px;"/></a></p>
+														<a class="title" th:href="@{/productdetails/{id}(id=${product.id})}"><span   th:text="${product.name}" ></span></a><br>
+														<a class="category" th:href="@{/productdetails/{id}(id=${product.id})}"><span   th:text="${product.categorie}" ></span></a><br>
+														<span class="price" th:text="${product.price}" ></span><span>$</span>
+													</div>
+												</li>
+												
+										    </ul>
+										
+										</div>
+									</div>							
+								</div>
+							</div>						
+						</div>
+						<div class="row feature_box">						
+							<div class="span4">
+								<div class="service">
+									<div class="responsive">	
+										<img src="/themes/images/feature_img_2.png" alt="" />
+										<h4>MODERN <strong>DESIGN</strong></h4>
+										<p>The bestdesign in the all world enjoy it.</p>									
+									</div>
+								</div>
+							</div>
+							<div class="span4">	
+								<div class="service">
+									<div class="customize">			
+										<img src="/themes/images/feature_img_1.png" alt="" />
+										<h4>FREE <strong>SHIPPING</strong></h4>
+										<p>The best Quality of services You would never imagine .</p>
+									</div>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="service">
+									<div class="support">	
+										<img src="/themes/images/feature_img_3.png" alt="" />
+										<h4>24/7 LIVE <strong>SUPPORT</strong></h4>
+										<p>Live Support from our employees and data security is evident.</p>
+									</div>
+								</div>
+							</div>	
+						</div>		
+					</div>				
+				</div>
+			</section>
+			<section class="our_client">
+		
+			</section>
+			
+			<!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="mt-0">Let's Get In Touch!</h2>
+                        
+                        <p class="text-muted mb-5">Ready to start selling Ur Products!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                        <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                        <div>+212 (666) 666-666</div>
+                    </div>
+                    <div class="col-lg-4 mr-auto text-center">
+                        <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                        <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
+                        <a class="d-block" href="mailto:maddcontact@gmail.com">maddcontact@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+			
+					<!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - Madd WebSite</div></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+			
+		
+		<!--  </div>-->
+		<script src="/themes/js/common.js"></script>
+		<script src="/themes/js/jquery.flexslider-min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						slideshowSpeed: 4000,
+						animationSpeed: 600,
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+		</script>
+    </body>
+</html>
