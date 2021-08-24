@@ -9,7 +9,6 @@ import test.EcommerceWebApp.model.Product;
 import test.EcommerceWebApp.repositories.ProductRepository;
 
 
-// SET GLOBAL time_zone = '+5:30';
 
 @Component
 public class ProductService {
