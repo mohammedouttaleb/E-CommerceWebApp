@@ -13,10 +13,8 @@ public class EcommerceWebAppApplication {
 
 
 	public static void main(String[] args) {
-		System.out.println("salam a khay 7amid");
-		SpringApplication.run(EcommerceWebAppApplication.class, args);
-		System.out.println("salam a khay 7amid2");
-
+	  SpringApplication.run(EcommerceWebAppApplication.class, args);
+		
 	}
 
 }
